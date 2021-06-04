@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_5dp"
+        tools:context=".fragments.InstructionsFragment">
+
+        <TextView
+            android:id="@+id/instructions_title_text"
+            style="@style/style_welcome_text"
+            android:layout_centerHorizontal="true"
+            android:text="@string/instructions" />
+
+        <TextView
+            android:id="@+id/instructions_text"
+            style="@style/style_welcome_text"
+            android:layout_below="@+id/instructions_title_text"
+            android:layout_margin="@dimen/margin_15"
+            android:text="@string/instructions_details"
+            android:textSize="@dimen/text_size_large_24sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/go_to_shoe_list_btn"
+            style="@style/style_action_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_5dp"
+            android:layout_marginEnd="@dimen/margin_5dp"
+            android:layout_marginBottom="@dimen/margin_5dp"
+            android:text="@string/show_shoes_list" />
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ShoeStore</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_label">Email</string>
+    <string name="password">Password</string>
+    <string name="email_hint_text">Email...</string>
+    <string name="login_btn_text">Login</string>
+    <string name="new_login">New Login</string>
+    <string name="welcome_title">Welcome To Shoes Store</string>
+    <string name="welcome_screen_message">Thank You for using our application to shop we would love to see you reguallar customer for our application</string>
+    <string name="view_instructions">View Instructions</string>
+    <string name="show_shoes_list">Show shoes list</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructions_details">We have Many options of shoes that you can select from, just go to the show list by clicking the button below then click on the show you like from the list in the next screen</string>
+    <string name="logout">Logout</string>
+    <string name="image">Image</string>
+</resources>
