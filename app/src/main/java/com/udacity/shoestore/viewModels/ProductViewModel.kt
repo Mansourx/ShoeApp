@@ -11,10 +11,9 @@ import com.udacity.shoestore.models.Shoe
  * Dubai, UAE.
  */
 
+class ProductViewModel : ViewModel() {
 
-class ShoeListViewModel : ViewModel() {
-
-    private var _shoeList =  MutableLiveData<MutableList<Shoe>>()
+    private var _shoeList = MutableLiveData<MutableList<Shoe>>()
     val shoeList: MutableLiveData<MutableList<Shoe>>
         get() = _shoeList
 
@@ -36,17 +35,24 @@ class ShoeListViewModel : ViewModel() {
         val shoe2Images: ArrayList<Int> = ArrayList()
         shoe2Images.add(R.drawable.shoe_rebook)
         val shoe2 = Shoe(
-            "Reebok Originals", 42.0, "Reebok Company", "Black Rebook Original",
+            "Reebok Originals", 38.0, "Reebok Company", "Black Rebook Original",
             shoe2Images
         )
 
         val shoe3Images: ArrayList<Int> = ArrayList()
         shoe3Images.add(R.drawable.shoe_nike)
         val shoe3 = Shoe(
-            "Nike Originals", 42.0, "Nike Company", "Black Mike Original",
+            "Nike Originals", 44.0, "Nike Company", "Black Mike Original",
             shoe3Images
         )
 
-        _shoeList.value = mutableListOf(shoe1, shoe2, shoe3, shoe1, shoe2, shoe3)
+        _shoeList.value = mutableListOf(shoe1, shoe2, shoe3)
+    }
+
+    fun addProduct(name: String, size: Double, companyName: String, description: String) {
+        val shoeImages: ArrayList<Int> = ArrayList()
+        shoeImages.add(R.drawable.shoe_adidas)
+        val shoe = Shoe(name, size, companyName, description, shoeImages)
+        _shoeList.value?.add(shoe)
     }
 }

@@ -10,32 +10,28 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
-import com.udacity.shoestore.databinding.FragmentShoeListBinding
-import com.udacity.shoestore.viewModels.ShoeListViewModel
+import com.udacity.shoestore.databinding.FragmentProductListBinding
+import com.udacity.shoestore.viewModels.ProductViewModel
 import com.udacity.shoestore.widget.ShoeItemLayout
 
 
-class ShoeListFragment : Fragment() {
+class ProductListFragment : Fragment() {
 
-    private lateinit var binding: FragmentShoeListBinding
-    private lateinit var viewModel: ShoeListViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
+    private lateinit var binding: FragmentProductListBinding
+    private lateinit var viewModel: ProductViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_product_list, container, false)
 
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
 
-        binding.shoeListViewModel = viewModel
+        binding.productViewModel = viewModel
         binding.lifecycleOwner = this
 
         viewModel.shoeList.observe(viewLifecycleOwner, Observer { shoeList ->
@@ -59,6 +55,10 @@ class ShoeListFragment : Fragment() {
                 }
             }
         })
+
+        binding.goToDetailBtn.setOnClickListener {
+            findNavController().navigate(ProductListFragmentDirections.actionShoeListFragmentToProductDetailsFragment())
+        }
 
         return binding.root
     }

@@ -14,4 +14,11 @@
     <string name="instructions_details">We have Many options of shoes that you can select from, just go to the show list by clicking the button below then click on the show you like from the list in the next screen</string>
     <string name="logout">Logout</string>
     <string name="image">Image</string>
+    <string name="save">Save</string>
+    <string name="name">Name</string>
+    <string name="product_size">Product Size</string>
+    <string name="company_name">Company Name</string>
+    <string name="product_description">Product Description</string>
+    <string name="product_name">Product Name</string>
+    <string name="go">go</string>
 </resources>
