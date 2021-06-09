@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="productViewModel"
             type="com.udacity.shoestore.viewModels.ProductViewModel" />
@@ -38,9 +38,10 @@
                 android:layout_below="@+id/shoe_container"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:contentDescription="@string/go"
                 android:layout_margin="@dimen/margin_5dp"
-                app:rippleColor="@color/colorPrimaryDark" />
+                android:backgroundTint="@color/colorPrimary"
+                android:contentDescription="@string/go"
+                android:src="@drawable/ic_add" />
 
         </RelativeLayout>
 

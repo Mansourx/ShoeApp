@@ -14,13 +14,6 @@ class WelcomeFragment : Fragment() {
 
     private lateinit var binding: FragmentWelcomeBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,11 +22,10 @@ class WelcomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_welcome, container, false)
 
         binding.goToInstructionsBtn.setOnClickListener {
-           findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
+            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
         }
 
         return binding.root
     }
-
 
 }
