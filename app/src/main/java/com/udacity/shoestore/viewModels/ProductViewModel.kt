@@ -94,6 +94,10 @@ class ProductViewModel : ViewModel() {
 
     fun resetIsAdded() {
         _isAdded.value = false
+        productName.value = null
+        productDescription.value = null
+        productSize.value = null
+        companyName.value = null
     }
 
 }
