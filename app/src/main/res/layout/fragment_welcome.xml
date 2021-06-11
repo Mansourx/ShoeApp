@@ -1,28 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <!--Here using the ConstraintLayout to place the screen elements
+       in fix places relative to each other
+       -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_5dp"
+        android:background="@color/gray_222"
+        android:padding="@dimen/margin_5dp"
         tools:context=".fragments.WelcomeFragment">
 
         <TextView
             android:id="@+id/welcome_title_text"
             style="@style/style_welcome_text"
             android:layout_centerHorizontal="true"
-            android:text="@string/welcome_title" />
+            android:layout_marginTop="34dp"
+            android:text="@string/welcome_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/welcome_message_text"
             style="@style/style_welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/welcome_title_text"
             android:layout_margin="@dimen/margin_15"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/welcome_screen_message"
             android:textSize="@dimen/text_size_large_24sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@+id/go_to_instructions_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_title_text"
+            app:layout_constraintVertical_bias="0.508" />
 
         <Button
             android:id="@+id/go_to_instructions_btn"
@@ -31,11 +52,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="@dimen/margin_5dp"
-            android:layout_marginEnd="@dimen/margin_5dp"
-            android:layout_marginBottom="@dimen/margin_5dp"
-            android:text="@string/view_instructions" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/view_instructions"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

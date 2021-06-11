@@ -1,5 +1,6 @@
 package com.udacity.shoestore.viewModels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.R
@@ -17,8 +18,25 @@ class ProductViewModel : ViewModel() {
     val shoeList: MutableLiveData<MutableList<Shoe>>
         get() = _shoeList
 
+
+    var productName: MutableLiveData<String> = MutableLiveData()
+    var productDescription: MutableLiveData<String> = MutableLiveData()
+    var productSize: MutableLiveData<String> = MutableLiveData()
+    var companyName: MutableLiveData<String> = MutableLiveData()
+
+
+    private var _isAdded: MutableLiveData<Boolean> = MutableLiveData()
+    val isAdded: LiveData<Boolean>
+        get() = _isAdded
+
+    private var _cancel: MutableLiveData<Boolean> = MutableLiveData()
+    val cancel: LiveData<Boolean>
+        get() = _cancel
+
     init {
         initializeShoeList()
+        _isAdded.value = false
+        _cancel.value = false
     }
 
     /**
@@ -49,10 +67,33 @@ class ProductViewModel : ViewModel() {
         _shoeList.value = mutableListOf(shoe1, shoe2, shoe3)
     }
 
-    fun addProduct(name: String, size: Double, companyName: String, description: String) {
+    fun addProduct() {
         val shoeImages: ArrayList<Int> = ArrayList()
         shoeImages.add(R.drawable.shoe_adidas)
-        val shoe = Shoe(name, size, companyName, description, shoeImages)
-        _shoeList.value?.add(shoe)
+        val shoe = productSize.value?.let {
+            Shoe(
+                productName.value.toString(), it.toDouble(),
+                companyName.value.toString(), productDescription.value.toString(), shoeImages
+            )
+        }
+        if (shoe != null) {
+            _shoeList.value?.add(shoe)
+            _isAdded.value = true
+        } else {
+            _isAdded.value = false
+        }
     }
+
+    fun cancel() {
+        _cancel.value = true
+    }
+
+    fun resetCancel() {
+        _cancel.value = false
+    }
+
+    fun resetIsAdded() {
+        _isAdded.value = false
+    }
+
 }

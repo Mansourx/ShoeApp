@@ -22,4 +22,6 @@
     <string name="product_name">Product Name</string>
     <string name="go">go</string>
     <string name="empty_fields_message">Please Fill All Details</string>
+    <string name="shoe_list">Shoe List</string>
+    <string name="product_detail">Product Detail</string>
 </resources>

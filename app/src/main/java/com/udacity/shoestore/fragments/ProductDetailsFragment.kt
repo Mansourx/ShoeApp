@@ -1,14 +1,15 @@
 package com.udacity.shoestore.fragments
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentProductDetailsBinding
 import com.udacity.shoestore.viewModels.ProductViewModel
@@ -29,44 +30,25 @@ class ProductDetailsFragment : Fragment() {
         binding.productViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.cancelBtn.setOnClickListener {
-            findNavController().navigate(ProductDetailsFragmentDirections.actionProductDetailsFragmentToShoeListFragment())
-        }
-
-        binding.saveBtn.setOnClickListener {
-            val productName = binding.productNameEt.text.toString()
-            val productDescription = binding.productDescriptionEt.text.toString()
-            val companyName = binding.companyNameEt.text.toString()
-            val productSize = binding.productSizeEt.text.toString()
-            if (productName.isEmpty() || productSize.isEmpty() ||
-                companyName.isEmpty() || productDescription.isEmpty()
-            ) {
-                Toast.makeText(
-                    context,
-                    getString(R.string.empty_fields_message),
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                saveProduct(productName, productSize.toDouble(), companyName, productDescription)
+        // this cancel live data to observe if the cancel button clicked so we naviage back to the
+        // shoe list fragment again.
+        viewModel.cancel.observe(viewLifecycleOwner, Observer { _cancel ->
+            if (_cancel) {
                 findNavController().navigate(ProductDetailsFragmentDirections.actionProductDetailsFragmentToShoeListFragment())
+                viewModel.resetCancel()
             }
-        }
+        })
 
-        setHasOptionsMenu(true)
+        // This Variable to observe if the shoe is added or not if it's added we navigate back to the
+        // shoe list fragment. if not we know we have a missing fields and we show a toast error message!
+        viewModel.isAdded.observe(viewLifecycleOwner, Observer { _isAdded ->
+            if (_isAdded) {
+                findNavController().navigate(ProductDetailsFragmentDirections.actionProductDetailsFragmentToShoeListFragment())
+                viewModel.resetIsAdded()
+            }
+        })
+
         return binding.root
     }
 
-    private fun saveProduct(name: String, size: Double, companyName: String, description: String) {
-        viewModel.addProduct(name, size, companyName, description)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController()) ||
-                super.onOptionsItemSelected(item)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.logout_menu, menu)
-    }
 }

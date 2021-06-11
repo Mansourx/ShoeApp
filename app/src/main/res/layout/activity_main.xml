@@ -3,6 +3,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Here i am using LinearLayout because its very simple
+    its just containing only the NavHostFragment
+    also we can use FrameLayout because its just one element which is the
+    NavHostFragment.
+    -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

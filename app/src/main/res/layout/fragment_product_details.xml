@@ -10,9 +10,13 @@
             type="com.udacity.shoestore.viewModels.ProductViewModel" />
     </data>
 
+    <!--Here using the ConstraintLayout to place the screen elements
+    in fix places relative to each other
+    -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/gray_222"
         tools:context=".fragments.ProductDetailsFragment">
 
         <TextView
@@ -68,6 +72,8 @@
             android:layout_marginEnd="50dp"
             android:ems="10"
             android:inputType="textPersonName"
+            android:text="@={productViewModel.productName}"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,6 +85,8 @@
             android:layout_marginEnd="50dp"
             android:ems="10"
             android:inputType="textPersonName"
+            android:text="@={productViewModel.productDescription}"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/product_name_et" />
 
@@ -90,6 +98,8 @@
             android:layout_marginEnd="50dp"
             android:ems="10"
             android:inputType="textPersonName"
+            android:text="@={productViewModel.companyName}"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/product_description_et" />
 
@@ -101,6 +111,8 @@
             android:layout_marginEnd="50dp"
             android:ems="10"
             android:inputType="number"
+            android:text="@={productViewModel.productSize}"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/company_name_et"
             tools:ignore="TextFields" />
@@ -113,6 +125,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:onClick="@{() -> productViewModel.addProduct()}"
             android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -124,6 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
+            android:onClick="@{() -> productViewModel.cancel()}"
             android:text="@android:string/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -3,8 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--Here using the ConstraintLayout to place the screen elements
+        in fix places relative to each other
+        This Bit Complex to achieve using one Linear Layout
+        it may work using Multiple LinearLayout within each others
+        -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/gray_222"
         android:layout_height="match_parent">
 
 
@@ -62,6 +69,7 @@
             app:layout_constraintStart_toEndOf="@+id/product_image_View"
             app:layout_constraintTop_toBottomOf="@+id/company_name_text"
             tools:text="Product Size" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </merge>
